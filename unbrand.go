@@ -71,7 +71,9 @@ func SedHelper(expression, file string) (err error) {
 // FindMercurial
 func FindMercurial() (mercurialpath string, err error) {
 	mercurialpath = SearchPath(mercurial)
-	err = fmt.Errorf("Mercurial is required to clone Firefox. You can install:\n\tapt-get install mercurial - on Ubuntu and Debian distributions\n\t pacman install mercurial - on Arch distributions")
+	if mercurialpath == "" {
+		err = fmt.Errorf("Mercurial is required to clone Firefox. You can install:\n\tapt-get install mercurial - on Ubuntu and Debian distributions\n\t pacman install mercurial - on Arch distributions")
+	}
 	return
 }
 
